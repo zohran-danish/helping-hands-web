@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -18,6 +18,7 @@ import { SignUpLink } from '../SignUp';
 import { withFirebase, FirebaseContext } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { useState } from 'react';
+import helpingHandsImage from '../../assets/images/helping-hands-bg.jpg'
 
 // import backgroundImage from '../../Assets/Images/helping-hands-bj.jpg';
 
@@ -46,11 +47,11 @@ const SignInPage = () => (
 );
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh'
+    // height: '100vh'
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/user/a_kehmeier)',
-    backgroundRepeat: 'no-repeat',
+    // backgroundImage: 'url(https://source.unsplash.com/user/a_kehmeier)',
+    // backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.grey[900]
@@ -105,7 +106,15 @@ const SignInFormBase = props => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} >
+        <img
+          src={helpingHandsImage}
+          alt="Helping Hands"
+          className="sign-in-image"
+          height={678}
+          width={836}
+        />
+      </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -163,7 +172,7 @@ const SignInFormBase = props => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.SIGN_UP} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
