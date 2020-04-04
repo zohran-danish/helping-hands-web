@@ -1,0 +1,11 @@
+/****** 
+Global variable config file to use in entire application. 
+Specify new uint in seperate file and import here.
+We are not going to use font sizes using variable because it can be different as per component requirement.
+*******/
+
+@import 'config/colours';
+@import 'config/z-index';
+@import 'config/fonts';
+@import 'config/images';
+@import 'config/other-var';

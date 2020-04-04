@@ -1,0 +1,202 @@
+/*******
+Desktop utilities classes specify here.
+All utilities classes must start with d- or d-is- or d-has-
+for ex: d-heading
+Try to have class name in camelCase.
+********/
+
+.d-heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: transparentize($black, 0.13);
+}
+
+.d-greenButton {
+  background-color: $lightGreen;
+  border: 1px solid $lightGreen;
+  color: $white;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 20px !important;
+  outline: none;
+  padding: 4px 22px !important;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.14);
+  width: auto !important;
+  margin: 0px 8px !important;
+  align-self: flex-end;
+  white-space: nowrap;
+  @media (max-width: 1359px) {
+    padding: 2px 12px !important;
+  }
+}
+
+.d-whiteButton {
+  color: transparentize($black, 0.13);
+  border-radius: 20px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-align: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07) !important;
+  border: 1px solid rgba(0, 0, 0, 0.13) !important;
+  outline: none;
+  padding: 4px 16px !important;
+  width: auto !important;
+  margin: 0px 8px !important;
+  align-self: flex-end;
+  white-space: nowrap;
+  @media (max-width: 1359px) {
+    padding: 2px 12px !important;
+  }
+}
+
+.d-tl-bl-border-radius {
+  border-radius: 2px 0 0 2px;
+}
+
+.d-secondaryHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: transparentize($black, 0.13);
+}
+
+.d-text20 {
+  font-size: 20px;
+  color: transparentize($black, 0.13);
+}
+
+.d-text18 {
+  font-size: 18px;
+  color: transparentize($black, 0.3);
+}
+
+.d-text16 {
+  font-size: 16px;
+  color: transparentize($black, 0.3);
+}
+
+.d-text14-dark {
+  font-size: 14px;
+  color: transparentize($black, 0.3);
+}
+
+.d-text14-medium {
+  font-size: 14px;
+  color: transparentize($black, 0.13);
+}
+
+.d-text14 {
+  font-size: 14px;
+  color: transparentize($black, 0.46);
+}
+
+.d-text12 {
+  font-size: 12px;
+  color: transparentize($black, 0.46);
+}
+
+.d-lh24 {
+  line-height: 24px;
+}
+
+.d-lh20 {
+  line-height: 20px;
+}
+
+.d-popup {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: 0 3px 35px 0 transparentize($black, 0.9);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: $zIndex-4;
+}
+
+.d-popScreen {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  background-color: $white;
+  box-sizing: border-box;
+  cursor: auto;
+  z-index: $zIndex-9;
+}
+
+.d-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparentize($black, 0.6);
+  cursor: auto;
+  z-index: $zIndex-8;
+
+  &--transparent {
+    background-color: transparent;
+  }
+}
+
+.d-overflow {
+  margin-right: 7px; /* works with the overridden scrollbar - solving screen shifting issue at least for webkit */
+  overflow: hidden;
+}
+
+.d-secondaryLink {
+  color: transparentize($black, 0.46);
+  cursor: pointer;
+  & svg {
+    opacity: 0.54;
+  }
+  &:hover {
+    color: transparentize($black, 0.13);
+    & svg {
+      opacity: 0.87;
+    }
+  }
+}
+
+.d-viewHeight {
+  height: calc(100vh - (70px + 42px)); /* subtract headers-offset */
+  min-height: 550px;
+  max-height: 840px;
+}
+
+.d-tagline {
+  font-size: 40px;
+}
+
+.d-shimmer {
+  background: $bluishGrey;
+  animation: placeHolderShimmer 1.75s infinite forwards;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, $bluishGrey 8%, darken($bluishGrey, 3%) 18%, $bluishGrey 33%);
+  background-size: 800px 104px;
+}
+
+@for $i from 1 through 7 {
+  .d-line--clamp-#{$i} {
+    max-height: #{$i}em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-orient: vertical;
+    display: -webkit-box;
+    line-clamp: $i;
+  }
+}
+
+.d-textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

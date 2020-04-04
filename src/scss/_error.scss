@@ -1,0 +1,47 @@
+.error {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: $errorComponent;
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: $white;
+  box-sizing: border-box;
+
+  &--bookingButton {
+    top: -72%;
+  }
+
+  &--myBookingButton {
+    top: 72%;
+  }
+
+  &--bookingPay {
+    top: -72%;
+  }
+}
+
+.information {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: $information;
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: $white;
+  box-sizing: border-box;
+
+  &--bookingButton {
+    top: -72%;
+  }
+
+  &--myBookingButton {
+    top: 72%;
+  }
+
+  &--bookingPay {
+    top: -72%;
+  }
+}

@@ -1,0 +1,739 @@
+/*****
+Animation stylling goes here
+Animation timing must in between >=50ms and =< 300ms.
+Never use trnasition time more then 300 milliseconds.
+****/
+
+/* Fade in out animation */
+.fadeInOut {
+  &__enter {
+    opacity: 0.01;
+    visibility: hidden;
+    &.fadeInOut__enter--active {
+      opacity: 1;
+      transition: all 300ms ease-in;
+      visibility: visible;
+    }
+  }
+	&__enterVisible {
+		opacity: 0.01;
+		visibility: visible;
+		&--active {
+			opacity: 1;
+			transition: all 300ms ease-in;
+			visibility: visible;
+		}
+	}
+	&__leave {
+		opacity: 1;
+		visibility: visible;
+		&.fadeInOut__leave--active {
+			opacity: 0.01;
+			transition: all 150ms ease-in;
+			visibility: hidden;
+		}
+	}
+}
+
+/* Slide up down animation */
+.slideInOut {
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	&__enter {
+		max-height: 0;
+		&.slideInOut__enter--active {
+			max-height: 1000px;
+			transition: max-height 200ms ease;
+		}
+	}
+	&__leave {
+		max-height: 1000px;
+		&.slideInOut__leave--active {
+			max-height: 0;
+			transition: max-height 200ms ease;
+		}
+	}
+}
+
+/* Pilse effect */
+.pulseAniamtion {
+	-webkit-animation: pulse .65s infinite alternate;
+	animation: pulse .65s infinite alternate;
+}
+
+/* Ripple effect animation */
+.ripple {
+	overflow: hidden;
+	position: relative;
+	transform: translate3d(0, 0, 0);
+	&:after {
+		background-image: radial-gradient(circle, transparentize($black, .70) 10%, transparent 10.01%);
+		background-position: 50%;
+		background-repeat: no-repeat;
+		content: "";
+		display: block;
+		height: 100%;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		transform: scale(14, 14);
+		transition: transform .2s, opacity 1s;
+		width: 100%;
+	}
+	&:active:after {
+		opacity: .2;
+		transform: scale(0, 0);
+		transition: 0s;
+	}
+}
+
+.fadeInDown {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-name: fadeInDown;
+}
+
+/* Card loading effect */
+.fillEffect {
+	animation-duration: 700ms;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: contentLoader;
+	animation-timing-function: linear;
+	background-size: 800px 104px;
+	background: $lightGray;
+	background: linear-gradient(to right, $lightGray 8%, $border 18%, $lightGray 33%);
+	border-radius: 10px;
+	height: 18px;
+	position: relative;
+	width: 100%;
+	&--big {
+		border-radius: 20px;
+		height: 36px;
+	}
+}
+
+@-webkit-keyframes pulse{
+	0% {
+		opacity:.3
+	}
+	100% {
+		opacity:1
+	}
+}
+
+@keyframes pulse{
+	0% {
+		opacity:.3
+	}
+	100% {
+		opacity:1
+	}
+}
+
+@-webkit-keyframes contentLoader {
+	0% {
+		background-position: -100% 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
+}
+@keyframes contentLoader {
+	0% {
+		background-position: -100% 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
+}
+
+@-webkit-keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	} to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	} to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.oyo-progress {
+    display: block;
+    height: 5px;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    &>.bar1,, &>.bar3 {
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		background-color: transparentize($white,.3);
+    }
+    &>.bar1, &>.bar1 {
+	    animation-name: indeterminate1;
+	}
+	&>.progressbar {
+	    background-color: transparentize($white,.3);
+	    left: 0;
+	    width: 0%;
+	    z-index: 1;
+	}
+	&>.bar {
+	    bottom: 0;
+	    display: block;
+	    position: absolute;
+	    top: 0;
+	    transition: width .2s cubic-bezier(.4,0,.2,1);
+	    width: 0%;
+	}
+	&>.bufferbar {
+	    background-color: transparentize($black,.9);
+	    left: 0;
+	    width: 100%;
+	    z-index: 0;
+	}
+	&>.bar3 {
+	    animation-name: indeterminate2;
+	    background-image: none;
+	}
+	&:not(&__indeterminate):not(&__indeterminate)>.auxbar {
+	    background-image: linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7));
+	}
+	&>.auxbar {
+	    right: 0;
+	    width: 0%;
+	}
+}
+
+@-webkit-keyframes indeterminate1{
+	0% {
+		left:0%;
+		width:0%
+	}
+	50% {
+		left:25%;
+		width:75%
+	}
+	75% {
+		left:100%;
+		width:0%
+	}
+}
+
+@keyframes indeterminate1{
+	0% {
+		left:0%;
+		width:0%
+	}
+	50% {
+		left:25%;
+		width:75%
+	}
+	75% {
+		left:100%;
+		width:0%
+	}
+}
+
+@-webkit-keyframes indeterminate2{
+	0%,50% {
+		left:0%;
+		width:0%
+	}
+	75% {
+		left:0%;
+		width:25%
+	}
+	100% {
+		left:100%;
+		width:0%
+	}
+}
+
+@keyframes indeterminate2{
+	0%,50% {
+		left:0%;
+		width:0%
+	}
+	75% {
+		left:0%;
+		width:25%
+	}
+	100% {
+		left:100%;
+		width:0%
+	}
+}
+
+@keyframes moveUpAnimation {
+	from {
+		transform: translate3d(0, 87%, 0);
+	} to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes moveDownAnimation {
+	from {
+		transform: translate3d(0, 0, 0);
+	} to {
+		transform: translate3d(0, 87%, 0);
+	}
+}
+
+@keyframes shakeIt {
+	0% {
+		left: -5px;
+	}
+  25% {
+    left: 5px;
+  }
+	50% {
+		left: -5px;
+	}
+  75% {
+    left: 5px;
+  }
+	100% {
+		left: 0;
+	}
+}
+
+@-webkit-keyframes placeHolderShimmer{
+  0%{
+      background-position:-350px 0
+  }
+  100%{
+      background-position:350px 0
+  }
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+      background-position:-350px 0
+  }
+  100%{
+      background-position:350px 0
+  }
+}
+
+.slideInBottom {
+  &__enter {
+    animation-name: slideInDown;
+    &.slideInBottom__enter--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+  &__leave {
+    animation-name: slideOutUp;
+    &.slideInBottom__leave--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.slideInTop {
+  &__enter {
+    animation-name: slideInUp;
+    visibility: visible !important;
+    &.slideInTop__enter--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+  &__leave {
+    animation-name: slideOutDown;
+    &.slideInTop__leave--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.slideInLeft {
+  &__enter {
+    animation-name: slideInLeft;
+    visibility: visible !important;
+    &.slideInLeft__enter--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+  &__leave {
+    animation-name: slideOutRight;
+    &.slideInLeft__leave--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+.slideInRight {
+  &__enter {
+    animation-name: slideInRight;
+    visibility: visible !important;
+    &.slideInLeft__enter--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+  &__leave {
+    animation-name: slideOutLeft;
+    &.slideInLeft__leave--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+
+.slideInPopUp {
+  &__enter {
+    animation-name: slideInPopUp;
+    /*visibility: visible;*/
+    visibility: hidden;
+    &.slideInPopUp__enter--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+  &__leave {
+    animation-name: slideOutPopDown;
+    &.slideInPopUp__leave--active {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@keyframes slideInPopUp {
+  from {
+    transform: translate3d(0, 50px, 0);
+    /*visibility: visible;*/
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    visibility: visible; /* now make visible */
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutPopDown {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 25px, 0);
+  }
+}
+
+.loader {
+  position: relative;
+  margin: 0 auto;
+  width: 30px;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  &--autoComplete {
+    position: absolute;
+    right: 36px;
+    width: 15px;
+    top: 17px;
+    z-index: $zIndex-1;
+  }
+
+  &--placesAutoComplete {
+    position: absolute;
+    right: 36px;
+    width: 15px;
+    top: 10px;
+    z-index: $zIndex-1;
+  }
+
+  &--popup {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+  }
+
+  &__circular {
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+  }
+
+  &--transition {
+		position: fixed;
+    height: 100%;
+    margin-top: -30px;
+  }
+
+  &--white {
+    .loader__path {
+      animation: dash 1.5s ease-in-out infinite, loaderWhite 6s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: $drakGreen;
+  }
+  40% {
+    stroke: $drakGreen;
+  }
+  66% {
+    stroke: $drakGreen;
+  }
+  80%,
+  90% {
+    stroke: $drakGreen;
+  }
+}
+
+@keyframes loaderWhite {
+  100%,
+  0% {
+    stroke: $white;
+  }
+  40% {
+    stroke: $white;
+  }
+  66% {
+    stroke: $white;
+  }
+  80%,
+  90% {
+    stroke: $white;
+  }
+}
+
+.d-loader {
+  position: relative;
+  margin: 0 auto;
+  width: 50px;
+
+  &__dotsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  &__dot {
+    animation: loading-dots .8s infinite ease-in;
+    background-color: $black;
+    border-radius: 100%;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+
+    &:nth-child(2) {
+      animation-delay: .25s; /* 1/3 of total time */
+    }
+
+    &:nth-child(3) {
+      animation-delay: .52s; /* 2/3 of total time */
+    }
+  }
+
+  &--autoComplete {
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 20px;
+    width: 45px;
+  }
+
+  &--searchContainer {
+    margin-top: 25px;
+  }
+}
+
+@keyframes loading-dots {
+  0% {
+    opacity: .1;
+  }
+
+  40% {
+    opacity: .4;
+  }
+
+  75% {
+    opacity: .7;
+  }
+
+  100% {
+    opacity: .1;
+  }
+}
+
+
+.d-enterFadeIn {
+  &__enter {
+    animation-name: enterFadeIn;
+    visibility: visible !important;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes enterFadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}

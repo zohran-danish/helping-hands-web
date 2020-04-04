@@ -1,0 +1,58 @@
+/* All media query goes here */
+
+@media only screen
+and (max-device-width: 320px) {
+	.header__logo {
+		width: 55px;
+		height: 20px;
+	}
+  .header__premiseAmenities:nth-last-child(2) {
+    display: none;
+  }
+}
+
+@media only screen
+and (max-device-width: 360px) {
+  .header__logo {
+    width: 55px;
+    height: 20px;
+  }
+
+  .oyo-cell.hotelRatingPopup {
+    &__ratingDescriptionWrapper {
+      width: 95%!important;
+    }
+  }
+}
+
+@media
+ only screen
+ and (max-device-height:480px) {
+   .rotateScreen {
+     display: block !important;
+   }
+   html {
+      overflow: hidden;
+      height: 100%;
+   }
+   body {
+      overflow: hidden;
+      height: 100%;
+   }
+}
+
+@media
+ only screen
+ and (max-width: 1270px) {
+  .d-tagline {
+    font-size: 40px !important;
+  }
+}
+
+@media
+ only screen
+ and (max-width: 1100px) {
+  .d-tagline {
+    font-size: 30px !important;
+  }
+}

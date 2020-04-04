@@ -1,0 +1,8 @@
+/****** 
+Desktop-specific global variable config file to use in entire application. 
+Specify new uint in seperate file and import here.
+We are not going to use font sizes using variable because it can be different as per component requirement.
+*******/
+
+@import 'config/fonts-desktop';
+@import 'config/other-var';

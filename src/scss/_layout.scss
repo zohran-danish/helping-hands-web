@@ -1,0 +1,23 @@
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+.layout {
+  width: 100%;
+  // overflow-x: hidden;
+  //commented as it causes fixed btm elements to get hidden on iOS devices
+  height: 100%;
+  &__container {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  &__content {
+    // overflow-x: hidden;
+    z-index: $zIndex-1;
+    width: 100%;
+    &--onTop {
+      z-index: $zIndex-4;
+    }
+  }
+}

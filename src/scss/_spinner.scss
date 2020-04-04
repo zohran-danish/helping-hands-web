@@ -1,0 +1,47 @@
+/* All loaders comes here */
+
+.oyo-spinner {
+  height: 40px;
+  margin: 0 auto;
+  position: relative;
+  width: 40px;
+  &--sticky {
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate3d(-50%,-50%,0);
+  }
+  &__spinner {
+    animation: spinner 1.1s infinite linear;
+    border-color: $brand;
+    border-radius: 50%;
+    border-style: solid;
+    border-top-color: transparent !important;
+    border-width: 3px;
+    display: inline-block;
+    height: 40px;
+    margin-right: 12px;
+    position: relative;
+    text-align: initial;
+    vertical-align: middle;
+    width: 40px;
+    &--white {
+      border-color: $white;
+    }
+  }
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    transform: rotate(0deg); 
+  } to {
+    transform: rotate(1turn); 
+  }
+}
+@keyframes spinner {
+  0% {
+    transform:rotate(0deg);
+  } to {
+    transform:rotate(1turn); 
+  }
+}

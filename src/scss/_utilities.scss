@@ -1,0 +1,309 @@
+/*******
+All utilities classes specify here.
+All utilities classes must start with u- or is- or has-
+for ex: is-hidden, u-position
+Try to have class name in camelCase.
+********/
+
+.u-textCenter {
+  text-align: center;
+}
+
+.u-textRight {
+  text-align: right;
+}
+
+.u-textUppercase {
+  text-transform: uppercase;
+}
+
+.u-textCapitalize {
+  text-transform: capitalize;
+}
+
+.u-relative {
+  position: relative;
+}
+
+.u-overflow {
+  overflow: hidden;
+}
+
+.u-textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u-textRed {
+  color: $brand;
+}
+
+.u-displayBlock {
+  display: block;
+}
+
+.u-inlineBlock {
+  display: inline-block;
+}
+
+.is-hidden {
+  display: none;
+}
+.is-invisible {
+  visibility: hidden;
+}
+
+.u-marginTop0 {
+  margin-top: 0 !important;
+}
+
+.u-fullWidth {
+  width: 100%;
+}
+
+.u-oneForthWidth {
+  width: 25%;
+}
+
+.u-pullLeft {
+  float: left;
+}
+
+.u-pullRight {
+  float: right;
+}
+
+.u-extraLineHeight {
+  line-height: 1.5;
+}
+
+.u-width100 {
+  width: 100% !important;
+}
+
+.u-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparentize($black, 0.35);
+  z-index: $zIndex-3;
+
+  &--transparent {
+    background-color: transparent;
+  }
+
+  &--guestPicker {
+    top: 63px;
+    z-index: $zIndex-4;
+  }
+}
+
+.is-offline {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /></filter></svg>#filter');
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.offline-notification {
+  background: transparentize($black, .3);
+  bottom: 55px;
+  color: $white;
+  font-size: 14px;
+  left: 0;
+  padding: 16px;
+  position: fixed;
+  width: 100%;
+  z-index: $zIndex-10;
+}
+
+iframe[title="recaptcha challenge"] {
+  display: none !important;
+}
+body > div[style] {
+  display: none !important;
+}
+
+/* Branch iframe layout */
+iframe#branch-banner-iframe {
+  z-index: $zIndex-3 !important;
+}
+
+body.branch-banner-is-active[data-page-type="search-page"],
+body.branch-banner-is-active[data-page-type="city-page"],
+body.branch-banner-is-active[data-page-type="tag-page"],
+body.branch-banner-is-active[data-page-type="hotel-page"] {
+  margin-top: 0 !important;
+}
+
+.u-justifyCenter {
+  justify-content: center;
+}
+
+.u-justifySpaceBetween {
+  justify-content: space-between;
+}
+
+.u-direction--col {
+  flex-direction: column;
+}
+
+.u-h100 {
+  height: 100%;
+}
+
+.is-fontBold {
+  font-weight: 600;
+}
+
+.u-alignContentStart {
+  align-content: flex-start !important;
+}
+
+.u-alignItemsCenter {
+  align-items: center;
+}
+
+.u-flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-col-flexCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flex-1 {
+  flex: 1;
+  max-width: 50%;
+}
+.u-bgCover {
+  overflow: hidden;
+  background-size: cover;
+
+  img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+
+    width: auto;
+    height: auto;
+
+    max-height: none;
+    max-width: none;
+
+    min-height: 100%;
+    min-width: 100%;
+
+    transform: translate(-50%, -50%);
+  }
+}
+
+.u-hotelCategory {
+  color: transparentize($black, 0.3);
+  background-color: $white;
+
+  &--home {
+    color: $white;
+    background-color: $brand;
+  }
+
+  &--townhouse {
+    background: $black;
+    color: $white;
+  }
+
+  &--premium {
+    background-image: linear-gradient(110deg, $premium, $premiumSecondry);
+    color: $gold;
+  }
+
+  &--elite {
+    background-image: linear-gradient(110deg, $premium, $premiumSecondry);
+    color: $white;
+  }
+
+  &--flagship {
+    background-image: linear-gradient(110deg, $brandSecondry, $brand);
+    color: $white;
+  }
+
+  &--budget {
+    display: none;
+    border: 1px solid transparentize($black, 0.9);
+    color: transparentize($black, 0.3);
+    background-color: $white;
+  }
+
+  &--saver {
+    background-color: $gold;
+    color: $white;
+  }
+
+  &--silverkey {
+    color: $white;
+    background-color: $silverKey;
+  }
+
+  &--capital-o {
+    background-image: url(https://assets.oyoroomscdn.com/CapitalOXL.png);
+    background-position: center;
+    color: $black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-indent: -1000em;
+    background-color: black;
+    height: 13px;
+    width: 45px;
+  }
+
+  &--edition-o {
+    background-image: linear-gradient(110deg, $editionO, $editionOSecondary);
+    color: $black;
+  }
+}
+
+.reset-a {
+  color: inherit;
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:active {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.u-shimmer {
+  background: darken($border, 6%);
+  animation: placeHolderShimmer 1.75s infinite forwards;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, $border 8%, darken($border, 6%) 18%, $border 33%);
+  background-size: 800px 104px;
+}
+
+.u-block {
+  display: block;
+}
+
+html[dir="rtl"] {
+  .u-RTLNegative {
+    svg {
+      transform: scaleX(-1);
+    }
+  }
+  
+  .u-RTLPositive {
+    svg {
+      transform: scaleX(1);
+    }
+  }
+}

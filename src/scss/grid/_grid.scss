@@ -1,0 +1,246 @@
+/***** 
+Grid framework to use in entire application 
+Row and column classes Detail:
+
+oyo-row						|	Defines a container as an row component							|	Required on "outer" div element
+oyo-cell					|	Defines a container as an cell									|	Required on "inner" div elements
+oyo-row--no-spacing			|	Modifies the grid cells to have no margin between them.			|	Optional on grid container.
+oyo-cell--N-col				|	Sets the column size for the cell to N							|	N is 1-12 inclusive, defaults to 4; optional on "inner" div elements
+oyo-cell--N-col-desktop		|	Sets the column size for the cell to N in desktop mode only		|	N is 1-12 inclusive; optional on "inner" div elements
+oyo-cell--N-col-tablet		|	Sets the column size for the cell to N in tablet mode only		|	N is 1-8 inclusive; optional on "inner" div elements
+oyo-cell--N-col-phone		|	Sets the column size for the cell to N in phone mode only		|	N is 1-4 inclusive; optional on "inner" div elements
+oyo-cell--N-offset			|	Adds N columns of whitespace before the cell					|	N is 1-11 inclusive; optional on "inner" div elements
+oyo-cell--N-offset-desktop	|	Adds N columns of whitespace before the cell in desktop mode	|	N is 1-11 inclusive; optional on "inner" div elements
+oyo-cell--N-offset-tablet	|	Adds N columns of whitespace before the cell in tablet mode		|	N is 1-7 inclusive; optional on "inner" div elements
+oyo-cell--N-offset-phone	|	Adds N columns of whitespace before the cell in phone mode		|	N is 1-3 inclusive; optional on "inner" div elements
+oyo-cell--order-N			|	Reorders cell to position N										|	N is 1-12 inclusive; optional on "inner" div elements
+oyo-cell--order-N-desktop	|	Reorders cell to position N when in desktop mode				|	N is 1-12 inclusive; optional on "inner" div elements
+oyo-cell--order-N-tablet	|	Reorders cell to position N when in tablet mode					|	N is 1-12 inclusive; optional on "inner" div elements
+oyo-cell--order-N-phone		|	Reorders cell to position N when in phone mode					|	N is 1-12 inclusive; optional on "inner" div elements
+oyo-cell--hide-desktop		|	Hides the cell when in desktop mode								|	Optional on "inner" div elements
+oyo-cell--hide-tablet		|	Hides the cell when in tablet mode								|	Optional on "inner" div elements
+oyo-cell--hide-phone		|	Hides the cell when in phone mode								|	Optional on "inner" div elements
+oyo-cell--stretch			|	Stretches the cell vertically to fill the parent				|	Default; optional on "inner" div elements
+oyo-cell--top				|	Aligns the cell to the top of the parent						|	Optional on "inner" div elements
+oyo-cell--middle			|	Aligns the cell to the middle of the parent						|	Optional on "inner" div elements
+oyo-cell--bottom			|	Aligns the cell to the bottom of the parent						|	Optional on "inner" div elements
+
+******/
+
+$grid-desktop-columns: 12;
+$grid-desktop-breakpoint: 840px;
+$grid-desktop-gutter: 16px;
+$grid-desktop-margin: 16px;
+
+$grid-tablet-columns: 8;
+$grid-tablet-breakpoint: 480px;
+$grid-tablet-gutter: $grid-desktop-gutter;
+$grid-tablet-margin: $grid-desktop-margin;
+
+$grid-phone-columns: 4;
+$grid-phone-gutter: $grid-desktop-gutter;
+$grid-phone-margin: $grid-desktop-margin;
+
+.oyo-row {
+  align-items: stretch;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+	&.oyo-row--no-spacing {
+		padding: 0;
+	}
+}
+
+.oyo-cell {
+	box-sizing: border-box;
+  &--top {
+    align-self: flex-start;
+  }
+  &--middle {
+    align-self: center;
+  }
+  &--bottom {
+    align-self: flex-end;
+  }
+}
+
+.oyo-row.oyo-row--no-spacing > .oyo-cell {
+	margin: 0;
+}
+
+// Define order override classes.
+@for $i from 1 through $grid-desktop-columns {
+  .oyo-cell--order-#{$i} {
+    order: $i;
+  }
+}
+
+// Mixins for width calculation.
+@mixin partial-size($size, $columns, $gutter) {
+  width: #{(($size / $columns) * 100)+"%"};
+  width: -webkit-calc(#{(($size / $columns) * 100)+"%"} - #{$gutter});
+  width: -moz-calc(#{(($size / $columns) * 100)+"%"} - #{$gutter});
+  width: calc(#{(($size / $columns) * 100)+"%"} - #{$gutter});
+
+  .oyo-row--no-spacing > & {
+    width: #{(($size / $columns) * 100)+"%"};
+  }
+}
+
+@mixin full-size($gutter) {
+  @include partial-size(1, 1, $gutter);
+}
+
+@mixin offset-size($size, $columns, $gutter) {
+  margin-left: #{(($size / $columns) * 100)+"%"};
+  margin-left: -webkit-calc(#{(($size / $columns) * 100)+"%"} + #{$gutter / 2});
+  margin-left: -moz-calc(#{(($size / $columns) * 100)+"%"} + #{$gutter / 2});
+  margin-left: calc(#{(($size / $columns) * 100)+"%"} + #{$gutter / 2});
+
+  .oyo-row.oyo-row--no-spacing > & {
+    margin-left: #{(($size / $columns) * 100)+"%"};
+  }
+}
+
+
+
+////////// Phone //////////
+
+@media (max-width: $grid-tablet-breakpoint - 1) {
+  .oyo-row {
+    padding: $grid-phone-margin - ($grid-phone-gutter / 2);
+  }
+
+  .oyo-cell {
+    margin: $grid-phone-gutter / 2;
+    @include partial-size($grid-phone-columns, $grid-phone-columns,
+        $grid-phone-gutter);
+  }
+
+  .oyo-cell--hide-phone {
+    display: none !important;
+  }
+
+  // Define order override classes.
+  @for $i from 1 through $grid-desktop-columns {
+    .oyo-cell--order-#{$i}-phone.oyo-cell--order-#{$i}-phone {
+      order: $i;
+    }
+  }
+
+  // Define partial sizes for columnNumber < totalColumns.
+  @for $i from 1 through ($grid-phone-columns - 1) {
+    .oyo-cell--#{$i}-col,
+    .oyo-cell--#{$i}-col-phone.oyo-cell--#{$i}-col-phone {
+      @include partial-size($i, $grid-phone-columns, $grid-phone-gutter);
+    }
+  }
+
+  // Define 100% for everything else.
+  @for $i from $grid-phone-columns through $grid-desktop-columns {
+    .oyo-cell--#{$i}-col,
+    .oyo-cell--#{$i}-col-phone.oyo-cell--#{$i}-col-phone {
+      @include full-size($grid-phone-gutter);
+    }
+  }
+
+  // Define valid phone offsets.
+  @for $i from 1 through ($grid-phone-columns - 1) {
+    .oyo-cell--#{$i}-offset,
+    .oyo-cell--#{$i}-offset-phone.oyo-cell--#{$i}-offset-phone {
+      @include offset-size($i, $grid-phone-columns, $grid-phone-gutter);
+    }
+  }
+}
+
+
+////////// Tablet //////////
+
+@media (min-width: $grid-tablet-breakpoint) and (max-width: $grid-desktop-breakpoint - 1) {
+  .oyo-row {
+    padding: $grid-tablet-margin - ($grid-tablet-gutter / 2);
+  }
+
+  .oyo-cell {
+    margin: $grid-tablet-gutter / 2;
+    @include partial-size($grid-phone-columns, $grid-tablet-columns,
+        $grid-tablet-gutter);
+  }
+
+  .oyo-cell--hide-tablet {
+    display: none !important;
+  }
+
+  // Define order override classes.
+  @for $i from 1 through $grid-desktop-columns {
+    .oyo-cell--order-#{$i}-tablet.oyo-cell--order-#{$i}-tablet {
+      order: $i;
+    }
+  }
+
+  // Define partial sizes for columnNumber < totalColumns.
+  @for $i from 1 through ($grid-tablet-columns - 1) {
+    .oyo-cell--#{$i}-col,
+    .oyo-cell--#{$i}-col-tablet.oyo-cell--#{$i}-col-tablet {
+      @include partial-size($i, $grid-tablet-columns, $grid-tablet-gutter);
+    }
+  }
+
+  // Define 100% for everything else.
+  @for $i from $grid-tablet-columns through $grid-desktop-columns {
+    .oyo-cell--#{$i}-col,
+    .oyo-cell--#{$i}-col-tablet.oyo-cell--#{$i}-col-tablet {
+      @include full-size($grid-tablet-gutter);
+    }
+  }
+
+  // Define valid tablet offsets.
+  @for $i from 1 through ($grid-tablet-columns - 1) {
+    .oyo-cell--#{$i}-offset,
+    .oyo-cell--#{$i}-offset-tablet.oyo-cell--#{$i}-offset-tablet {
+      @include offset-size($i, $grid-tablet-columns, $grid-tablet-gutter);
+    }
+  }
+}
+
+
+////////// Desktop //////////
+
+@media (min-width: $grid-desktop-breakpoint) {
+  .oyo-row {
+    padding: $grid-desktop-margin - ($grid-desktop-gutter / 2);
+  }
+
+  .oyo-cell {
+    margin: $grid-desktop-gutter / 2;
+    @include partial-size($grid-phone-columns, $grid-desktop-columns,
+        $grid-desktop-gutter);
+  }
+
+  .oyo-cell--hide-desktop {
+    display: none !important;
+  }
+
+  // Define order override classes.
+  @for $i from 1 through $grid-desktop-columns {
+    .oyo-cell--order-#{$i}-desktop.oyo-cell--order-#{$i}-desktop {
+      order: $i;
+    }
+  }
+
+  // Define partial sizes for all numbers of columns.
+  @for $i from 1 through $grid-desktop-columns {
+    .oyo-cell--#{$i}-col,
+    .oyo-cell--#{$i}-col-desktop.oyo-cell--#{$i}-col-desktop {
+      @include partial-size($i, $grid-desktop-columns, $grid-desktop-gutter);
+    }
+  }
+
+  // Define valid desktop offsets.
+  @for $i from 1 through ($grid-desktop-columns - 1) {
+    .oyo-cell--#{$i}-offset,
+    .oyo-cell--#{$i}-offset-desktop.oyo-cell--#{$i}-offset-desktop {
+      @include offset-size($i, $grid-desktop-columns, $grid-desktop-gutter);
+    }
+  }
+}
