@@ -1,0 +1,121 @@
+.header-container {
+  flex-direction: column;
+  color: #555;
+  width: 100%;
+  border: 0;
+  display: flex;
+  padding: 0.625rem 0;
+  z-index: unset;
+  position: fixed;
+  top:0px;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+    0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  transition: all 150ms ease 0s;
+  border-radius: 3px;
+  background-color: #192a56;
+  font-family: serif;
+  height: 75px;
+  z-index: 100;
+}
+
+.header-navigation {
+  display: flex;
+  flex-direction: row;
+  width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  padding-left: 20px;
+  svg {
+    stroke-width: 0;
+    fill-opacity: 1;
+    stroke: rgba(69, 178, 157, 1);
+    stroke-opacity: 1;
+    fill: rgba(69, 178, 157, 1);
+  }
+  div:hover {
+    color: #e44236;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 24px;
+    font-family: serif;
+    align-self: flex-end;
+    padding-left: 20px;
+  }
+}
+
+.navigation {
+  display: flex;
+}
+
+.nav-items-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  .nav-items {
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 10px 0px 10px;
+    display: flex;
+    align-self: flex-end;
+  }
+  span:hover {
+    color: #e44236;
+  }
+}
+
+.sign-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 52px;
+  width: 260px;
+  div:hover {
+    box-shadow: 0 4px 8px 0 rgba(34, 146, 20, 0.7);
+    padding: 12px 30px;
+  }
+}
+
+.signin-nav {
+  background-color: rgb(34, 146, 20);
+  margin-right: 20px;
+}
+
+.signup-nav {
+  background-color: rgba(160, 99, 147, 1);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 2px 0 rgba(233, 30, 99, 0.14),
+    0 3px 1px -2px rgba(233, 30, 99, 0.2), 0 1px 5px 0 rgba(233, 30, 99, 0.12);
+}
+
+.signup-nav,
+.signin-nav {
+  border-radius: 30px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0.3125rem 10px;
+  padding: 8px 24px;
+  text-transform: uppercase;
+  text-decoration: none;
+  top: 3px;
+  display: inline-flex;
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  min-height: auto;
+  text-align: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,40 @@
+.explore-container {
+  width:1200px;
+  margin:auto;
+}
+
+.explore-heading {
+  text-align: center;
+  font-size:36px;
+}
+
+.explore-grid {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  background-color: #fff;
+  display:flex;
+  width:500px;
+  margin:20px auto;
+  box-shadow:1px 2px 2px 1px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.item-image {
+  height:150px;
+  width:200px;
+  margin:10px;
+}
+
+.item-description {
+  padding:10px;
+}
+
+.item-button {
+  margin:10px;
+  border-radius:12px !important;
+  width:100%;
+}

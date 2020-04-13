@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Banner from '../Landing/Banner/index';
+import Banner from '../LandingPage/Banner/index';
 
 const Home = () => {
   return (
-      <Banner />
+      <div>home</div>
   );
 }
 

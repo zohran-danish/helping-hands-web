@@ -1,0 +1,73 @@
+@import "../../../scss/variables";
+@import "../../../scss/fonts/fonts";
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+$font-regular: 'Brown-Regular';
+$font-bold: 'Brown-Bold';
+$font-light: 'Brown-Light';
+
+
+.Banner {
+  &__container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width:100%;
+    background-color: rgba(0,0,0,0.3);
+  }
+  &__backgroundImage {
+      width: 100%;
+      position: absolute;
+      height: 800px;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      background-color: rgba(0, 0, 0, 0.2);
+  }
+  &__heading-container {
+    position: relative;
+  }
+  &__heading {
+    font-size:62px;
+    color: #f2f3f2;
+    font-weight: 900;
+    text-align: center;
+    line-height: 0.8em;
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+  }
+  &__heading-desc {
+    font-size: 30px;
+    color: rgb(255, 239, 16);
+    font-style:oblique;
+      q {
+        font-size: 30px;
+        quotes: "\201C""\201D""\2018""\2019";
+        padding: 10px 20px;
+        line-height: 1.4;
+      }
+
+      q:before {
+        content: open-quote;
+        display: inline;
+        line-height: 0;
+        left: -10px;
+        position: relative;
+        top: 5px;
+        font-size: 1.5em;
+      }
+      q:after {
+        content: close-quote;
+        display: inline;
+        line-height: 0;
+        left: 10px;
+        position: relative;
+        top: 5px;
+        font-size: 1.5em;
+      }
+  }
+}

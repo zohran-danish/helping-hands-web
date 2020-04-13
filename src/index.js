@@ -4,6 +4,7 @@ import './index.css'
 import App from '../src/components/App'
 import * as serviceWorker from './serviceWorker'
 import Firebase, { FirebaseContext } from './components/Firebase'
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>

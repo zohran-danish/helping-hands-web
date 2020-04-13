@@ -47,7 +47,7 @@ const SignInPage = () => (
 );
 const useStyles = makeStyles(theme => ({
   root: {
-    // height: '100vh'
+    height: '100vh'
   },
   image: {
     // backgroundImage: 'url(https://source.unsplash.com/user/a_kehmeier)',
@@ -104,14 +104,14 @@ const SignInFormBase = props => {
   console.log(state.error);
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid style={{paddingTop:'76px'}} container component="main" className={classes.root} >
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} >
         <img
           src={helpingHandsImage}
           alt="Helping Hands"
           className="sign-in-image"
-          height={678}
+          height={710}
           width={836}
         />
       </Grid>
