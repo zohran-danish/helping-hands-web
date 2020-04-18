@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
-import helpingHandslogo from '../../assets/images/helpingHandslogo.jpeg'
+
+const helpingHandslogo = window.location.orign + '/images/helpingHandslogo.jpeg'
 
 const Navigation = () => (
   <div className="header-navigation">
