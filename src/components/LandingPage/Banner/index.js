@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.scss'
-import backgroundImage from '../../../assets/images/helping-hands-background.jpg'
+// import backgroundImage from '/images/helping-hands-background.jpg'
 
 const Banner = () => {
   return (
     <div className="Banner__container">
       <img
-        src={backgroundImage}
+        src={window.location.origin + '/images/helping-hands-background.jpg'}
         className="Banner__backgroundImage"
         alt="Helping Hands background"
       />
