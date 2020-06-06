@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 import { Button } from 'antd';
+// import PizzaImage from '/images/pizza.jpg'
 import itemData from '../../../data/items.json'
 
 

@@ -18,9 +18,7 @@ import { SignUpLink } from '../SignUp';
 import { withFirebase, FirebaseContext } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { useState } from 'react';
-import helpingHandsImage from '../../assets/images/helping-hands-bg.jpg'
-
-// import backgroundImage from '../../Assets/Images/helping-hands-bj.jpg';
+// import helpingHandsImage from '/images/helping-hands-bg.jpg'
 
 const INITIAL_STATE = {
   email: '',
@@ -108,7 +106,7 @@ const SignInFormBase = props => {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} >
         <img
-          src={helpingHandsImage}
+          src={window.location.origin + '/images/helping-hands-bg.jpg'}
           alt="Helping Hands"
           className="sign-in-image"
           height={710}
