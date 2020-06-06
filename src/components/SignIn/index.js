@@ -102,7 +102,7 @@ const SignInFormBase = props => {
   console.log(state.error);
 
   return (
-    <Grid style={{paddingTop:'76px'}} container component="main" className={classes.root} >
+    <Grid container component="main" className={classes.root} >
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} >
         <img

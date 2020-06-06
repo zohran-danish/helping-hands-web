@@ -20,7 +20,6 @@ import Container from '@material-ui/core/Container'
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    paddingTop:'76px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
