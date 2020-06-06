@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.scss';
 import { Button } from 'antd';
-import PizzaImage from '../../../assets/images/pizza.jpg'
 import itemData from '../../../data/items.json'
 
 
@@ -18,9 +17,6 @@ const Explore = () => {
     </div>
   )
 }
-
-
-
 
 const Item = (props) => {
 
