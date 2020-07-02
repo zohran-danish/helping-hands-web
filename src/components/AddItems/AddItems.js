@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import './AddItems.scss'
-import { Upload, message, Form, Input, Button } from 'antd'
+import { Upload, message, Form, Input, Button, Select, Row, Col } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
 import SelectForm from '../../common-components/SelectForm/SelectForm'
+import { DatePicker, TimePicker } from 'antd'
+import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 const { Dragger } = Upload
+const { Option } = Select
 
-const AddItems = () => {
+const API_KEY = 'AIzaSyAMQ5JKsPU21EqmYljJb0xKm37kJ-0rVB4'
+
+const AddItems = (props) => {
   const [category, setCategory] = useState()
 
   const uploaderProps = {
@@ -26,6 +31,11 @@ const AddItems = () => {
     },
   }
 
+  const mapStyles = {
+    width: '100%',
+    height: '100%',
+  }
+
   const layout = {
     labelCol: {
       span: 4,
@@ -40,6 +50,19 @@ const AddItems = () => {
       span: 16,
     },
   }
+
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select
+        style={{
+          width: 70,
+        }}
+        defaultValue="+91"
+      >
+        <Option value="+91">+91</Option>
+      </Select>
+    </Form.Item>
+  )
 
   const categoriesOptions = [
     'Food',
@@ -75,7 +98,7 @@ const AddItems = () => {
             <InboxOutlined />
           </p>
           <p className="ant-upload-text">
-            Click or drag file to this area to upload
+            Click or drag file to this area to upload Images of the Item
           </p>
           <p className="ant-upload-hint">
             Support for a single or bulk upload. Strictly prohibit from
@@ -104,15 +127,64 @@ const AddItems = () => {
         <Form.Item label="Description" name="description">
           <Input.TextArea />
         </Form.Item>
+        <Form.Item
+          name="phone"
+          label="Phone Number"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your phone number!',
+            },
+          ]}
+        >
+          <Input
+            addonBefore={prefixSelector}
+            style={{
+              width: '35%',
+            }}
+          />
+        </Form.Item>
+
+        <Form.Item label="Available Date " name="availableDateRange">
+          <DatePicker.RangePicker
+            style={{
+              width: '35%',
+            }}
+          />
+        </Form.Item>
+
+        <Form.Item label="Pick Up Time" name="pickUpTime">
+          <TimePicker.RangePicker
+            format={'HH:mm'}
+            style={{
+              width: '35%',
+            }}
+          />
+        </Form.Item>
+
+        <Form.Item label="Address" name="address">
+          <Input.TextArea />
+        </Form.Item>
+
+        {/* <Map
+          google={props.google}
+          zoom={8}
+          style={mapStyles}
+          initialCenter={{ lat: 47.444, lng: -122.176}}
+        /> */}
 
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+          <Row>
+            <Col offset={6}>
+              <Button type="primary" htmlType="submit">
+                Add Item
+              </Button>
+            </Col>
+          </Row>
         </Form.Item>
       </Form>
     </div>
   )
 }
 
-export default AddItems
+export default GoogleApiWrapper({ apiKey: API_KEY })(AddItems)

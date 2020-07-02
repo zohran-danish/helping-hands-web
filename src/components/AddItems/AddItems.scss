@@ -3,13 +3,19 @@ $ant-font : 'Segoe UI','Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple 
 .add-items {
   &__container {
     display:flex;
-    padding-top:30px;
     flex-direction: column;
     font-family: $ant-font;
-    width:50%;
-    margin:auto;
+    margin: auto;
+    background-color: #EAF0F1;
     .ant-form-item-label {
       text-align:left;
+    }
+
+    .ant-form {
+      width: 70%;
+      padding: 50px;
+      margin: 50px auto;
+      background-color:#fff;
     }
   }
 
